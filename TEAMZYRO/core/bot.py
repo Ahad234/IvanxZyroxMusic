@@ -3,17 +3,17 @@ from pyrogram import Client, errors
 from pyrogram.enums import ChatMemberStatus, ParseMode
 import config
 
-from ..logging import LOGGER  # Make sure your folder structure supports this
+from ..logging import LOGGER
 
 
 class ZYRO(Client):
-    def init(self, session_name: str = "ZYROMUSIC", in_memory: bool = False):
+    def __init__(self, session_name: str = "ZYROMUSIC", in_memory: bool = False):
         """
         session_name : name of the session (persistent if in_memory=False)
         in_memory : whether to keep session in memory only
         """
-        LOGGER(name).info("Starting Bot...")
-        super().init(
+        LOGGER(session_name).info("Starting Bot...")
+        super().__init__(
             name=session_name,
             api_id=config.API_ID,
             api_hash=config.API_HASH,
@@ -44,14 +44,14 @@ class ZYRO(Client):
                 parse_mode=ParseMode.HTML,
             )
         except (errors.ChannelInvalid, errors.PeerIdInvalid):
-            LOGGER(name).error(
+            LOGGER("ZYROMUSIC").error(
                 "Bot cannot access the log group/channel. "
                 "Make sure the bot is added to your log group/channel."
             )
             sys.exit(1)
         except Exception as ex:
-            LOGGER(name).error(
-                f"Failed to send startup message.\nReason: {type(ex).name}: {ex}"
+            LOGGER("ZYROMUSIC").error(
+                f"Failed to send startup message.\nReason: {type(ex).__name__}: {ex}"
             )
             sys.exit(1)
 
@@ -59,18 +59,18 @@ class ZYRO(Client):
         try:
             member = await self.get_chat_member(config.LOGGER_ID, self.id)
             if member.status != ChatMemberStatus.ADMINISTRATOR:
-                LOGGER(name).error(
+                LOGGER("ZYROMUSIC").error(
                     "Bot is not an admin in the log group/channel. Please promote it."
                 )
                 sys.exit(1)
         except Exception as ex:
-            LOGGER(name).error(
-                f"Failed to verify admin status.\nReason: {type(ex).name}: {ex}"
+            LOGGER("ZYROMUSIC").error(
+                f"Failed to verify admin status.\nReason: {type(ex).__name__}: {ex}"
             )
             sys.exit(1)
 
-        LOGGER(name).info(f"Music Bot Started as {self.name} (@{self.username})")
+        LOGGER("ZYROMUSIC").info(f"Music Bot Started as {self.name} (@{self.username})")
 
     async def stop(self):
         await super().stop()
-        LOGGER(name).info("Bot stopped successfully.")
+        LOGGER("ZYROMUSIC").info("Bot stopped successfully.")
