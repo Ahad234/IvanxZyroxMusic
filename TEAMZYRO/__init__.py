@@ -1,25 +1,35 @@
 from TEAMZYRO.core.bot import ZYRO
 from TEAMZYRO.core.dir import dirr
 from TEAMZYRO.core.git import git
-#from TEAMZYRO.core.waifu_databese import *
 from TEAMZYRO.core.userbot import Userbot
 from TEAMZYRO.misc import dbb, heroku
-from pyrogram import Client
 from SafoneAPI import SafoneAPI
 from .logging import LOGGER
-#from TEAMZYRO.core.application import application
+from .platforms import (
+    AppleAPI,
+    CarbonAPI,
+    SoundAPI,
+    SpotifyAPI,
+    RessoAPI,
+    TeleAPI,
+    YouTubeAPI,
+)
+
+# -------------------------- INITIAL SETUP -------------------------------
 
 dirr()
 git()
 dbb()
 heroku()
 
+# -------------------------- MAIN CLIENTS --------------------------------
+
 app = ZYRO()
 api = SafoneAPI()
 userbot = Userbot()
-#application = application
+# application = application   # (Disabled for now)
 
-from .platforms import *
+# -------------------------- PLATFORM APIS -------------------------------
 
 Apple = AppleAPI()
 Carbon = CarbonAPI()
@@ -29,7 +39,7 @@ Resso = RessoAPI()
 Telegram = TeleAPI()
 YouTube = YouTubeAPI()
 
-#--------------------------- STRIN ---------------------------------------
+# --------------------------- GLOBAL STATE -------------------------------
 
 locks = {}
 message_counters = {}
