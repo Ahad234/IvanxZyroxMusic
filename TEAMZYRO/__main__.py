@@ -21,7 +21,7 @@ userbot = Userbot()
 
 async def init():
     if not any([config.STRING1, config.STRING2, config.STRING3, config.STRING4, config.STRING5]):
-        LOGGER(__name__).error("𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐍𝐨𝐭 𝐅𝐢𝐥𝐥𝐞𝐝 ❌")
+        LOGGER(__name__).error("❌ String Session not found. Fill at least one STRINGx in config!")
         sys.exit(1)
 
     await sudo()
@@ -37,37 +37,37 @@ async def init():
     except Exception:
         pass
 
-    # Start main app
+    # Start main bot
     await app.start()
 
     # Load all plugins
     for all_module in ALL_MODULES:
         importlib.import_module("TEAMZYRO.plugins." + all_module)
-    LOGGER("TEAMZYRO.plugins").info("𝐀𝐥𝐥 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 𝐋𝐨𝐚𝐝𝐞𝐝 🥳")
+    LOGGER("TEAMZYRO.plugins").info("✅ All modules loaded successfully!")
 
     # Start userbot
     await userbot.start()
 
-    # Initialize ZYRO bot instance
+    # Initialize ZYRO Voice Call Handler
     bot = ZYROClass()
     await bot.start()
 
     try:
         await bot.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
-        LOGGER("TEAMZYRO").error("𝗣𝗹𝗲𝗮𝘀𝗲 𝗦𝘁𝗮𝗿𝘁 𝗬𝗼𝘂𝗿 𝗟𝗼𝗴 𝗚𝗿𝗼𝘂𝗽 𝗩𝗼𝗶𝗰𝗲𝗖𝗵𝗮𝘁 ❗")
+        LOGGER("TEAMZYRO").error("❌ Please start a voice chat in your LOG GROUP before running the bot.")
         sys.exit(1)
 
     await bot.decorators()
 
-    LOGGER("TEAMZYRO").info("✅ Bot Successfully Started!")
+    LOGGER("TEAMZYRO").info("🥳 Bot started successfully!")
 
     await idle()
 
     await app.stop()
     await userbot.stop()
     await bot.stop()
-    LOGGER("TEAMZYRO").info("🛑 Bot Stopped")
+    LOGGER("TEAMZYRO").info("🛑 Bot stopped successfully!")
 
 if __name__ == "__main__":
     asyncio.run(init())
