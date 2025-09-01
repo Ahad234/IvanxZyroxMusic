@@ -1,28 +1,26 @@
+from TEAMZYRO.core.bot import ZYRO
 from TEAMZYRO.core.dir import dirr
 from TEAMZYRO.core.git import git
+#from TEAMZYRO.core.waifu_databese import *
+from TEAMZYRO.core.userbot import Userbot
 from TEAMZYRO.misc import dbb, heroku
+from pyrogram import Client
 from SafoneAPI import SafoneAPI
 from .logging import LOGGER
-from .platforms import (
-    AppleAPI,
-    CarbonAPI,
-    SoundAPI,
-    SpotifyAPI,
-    RessoAPI,
-    TeleAPI,
-    YouTubeAPI,
-)
-
-# -------------------------- INITIAL SETUP -------------------------------
+#from TEAMZYRO.core.application import application
 
 dirr()
 git()
 dbb()
 heroku()
 
-# -------------------------- PLATFORM APIS -------------------------------
-
+app = ZYRO()
 api = SafoneAPI()
+userbot = Userbot()
+#application = application
+
+from .platforms import *
+
 Apple = AppleAPI()
 Carbon = CarbonAPI()
 SoundCloud = SoundAPI()
@@ -31,7 +29,7 @@ Resso = RessoAPI()
 Telegram = TeleAPI()
 YouTube = YouTubeAPI()
 
-# --------------------------- GLOBAL STATE -------------------------------
+#--------------------------- STRIN ---------------------------------------
 
 locks = {}
 message_counters = {}
@@ -46,6 +44,4 @@ user_cooldowns = {}
 user_nguess_progress = {}
 user_guess_progress = {}
 
-# -------------------------- LOGGER READY -------------------------------
-
-LOGGER("TEAMZYRO").info("✅ Initial setup completed")
+# -------------------------- POWER SETUP --------------------------------
