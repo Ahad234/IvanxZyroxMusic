@@ -1,7 +1,5 @@
-from TEAMZYRO.core.bot import ZYRO
 from TEAMZYRO.core.dir import dirr
 from TEAMZYRO.core.git import git
-from TEAMZYRO.core.userbot import Userbot
 from TEAMZYRO.misc import dbb, heroku
 from SafoneAPI import SafoneAPI
 from .logging import LOGGER
@@ -22,15 +20,9 @@ git()
 dbb()
 heroku()
 
-# -------------------------- MAIN CLIENTS --------------------------------
-
-app = ZYRO()
-api = SafoneAPI()
-userbot = Userbot()
-# application = application   # (Disabled for now)
-
 # -------------------------- PLATFORM APIS -------------------------------
 
+api = SafoneAPI()
 Apple = AppleAPI()
 Carbon = CarbonAPI()
 SoundCloud = SoundAPI()
@@ -54,4 +46,6 @@ user_cooldowns = {}
 user_nguess_progress = {}
 user_guess_progress = {}
 
-# -------------------------- POWER SETUP --------------------------------
+# -------------------------- LOGGER READY -------------------------------
+
+LOGGER("TEAMZYRO").info("✅ Initial setup completed")
