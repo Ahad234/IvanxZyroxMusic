@@ -76,5 +76,5 @@ async def init():
     LOGGER("TEAMZYRO").info("𝗦𝗧𝗢𝗣 𝗕𝗔𝗕𝗬 𝗟𝗢𝗕 𝗠𝗨𝗦𝗜𝗖 🎻 𝗕𝗢𝗧")
 
 
-if name == "main":
+if name == "__main__":
     asyncio.run(init())
