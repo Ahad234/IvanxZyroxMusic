@@ -2,11 +2,11 @@
 
 <p align="center">⚡ 𝗔 𝗣𝗢𝗪𝗘𝗥𝗙𝗨𝗟 𝗠𝗨𝗦𝗜𝗖 𝗕𝗢𝗧 𝗙𝗢𝗥 𝗧𝗘𝗟𝗘𝗚𝗥𝗔𝗠 ⚡</p>
 
-<h1 align="center">🇮🇳 𝗝𝗔𝗬 𝗛𝗜𝗡𝗗, 𝗝𝗔𝗬 𝗕𝗛𝗔𝗥𝗔𝗧 🇮🇳</h1>
+<h1 align="center">👀 MADE BY IVAN👀</h1>
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-  <img src="https://readme-typing-svg.herokuapp.com?color=FF0085&width=620&lines=🇮🇳+𝗣𝗢𝗪𝗘𝗥𝗘𝗗+𝗕𝗬+𝗞𝗔𝗥𝗠𝗔+𝗕𝗛𝗔𝗜𝗬𝗔+𝗝𝗜+🇮🇳">
+  <img src="https://readme-typing-svg.herokuapp.com?color=FF0085&width=620&lines=🎶+DEVELOPED+𝗕𝗬+IVAN+💫">
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 </p>
 
