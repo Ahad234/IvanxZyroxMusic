@@ -21,7 +21,7 @@ async def init():
         and not config.STRING4
         and not config.STRING5
     ):
-        LOGGER(name).error("𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐍𝐨𝐭 𝐅𝐢𝐥𝐥𝐞𝐝, 𝐏𝐥𝐞𝐚𝐬𝐞 𝐅𝐢𝐥𝐥 𝐀 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦 𝐒𝐞𝐬𝐬𝐢𝐨𝐧")
+        LOGGER(__name__).error("𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐍𝐨𝐭 𝐅𝐢𝐥𝐥𝐞𝐝, 𝐏𝐥𝐞𝐚𝐬𝐞 𝐅𝐢𝐥𝐥 𝐀 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦 𝐒𝐞𝐬𝐬𝐢𝐨𝐧")
         exit()
     await sudo()
     try:
@@ -58,5 +58,5 @@ async def init():
     LOGGER("TEAMZYRO").info("𝗦𝗧𝗢𝗣 𝗕𝗔𝗕𝗬 𝗟𝗢𝗕 𝗬𝗢𝗨 𝗠𝗨𝗦𝗜𝗖🎻 𝗕𝗢𝗧..")
 
 
-if name == "__main__":
+if __name__ == "__main__":
     asyncio.get_event_loop().run_until_complete(init())
