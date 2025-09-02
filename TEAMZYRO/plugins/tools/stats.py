@@ -20,7 +20,7 @@ from config import BANNED_USERS
 
 
 # ✅ Debug added
-@app.on_message(filters.command(["stats", "stats"]) & filters.group)  # removed ~BANNED_USERS for testing
+@app.on_message(filters.command(["stats", "gstats"]) & filters.group)  # removed ~BANNED_USERS for testing
 @language
 async def stats_global(client, message: Message, _):
     print("✅ /stats triggered by", message.from_user.id)  # Debug log
