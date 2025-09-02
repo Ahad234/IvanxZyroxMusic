@@ -2,7 +2,7 @@ import asyncio
 import importlib
 
 from pyrogram import idle
-from pytgcalls.exceptions import NoActiveGroupCall, GroupCallNotFoundError
+from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from TEAMZYRO import LOGGER, app, userbot
