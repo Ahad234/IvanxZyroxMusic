@@ -14,16 +14,12 @@ from config import BANNED_USERS
 
 
 async def init():
-    if (
-        not config.STRING1
-        and not config.STRING2
-        and not config.STRING3
-        and not config.STRING4
-        and not config.STRING5
-    ):
-        LOGGER(__name__).error("𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐍𝐨𝐭 𝐅𝐢𝐥𝐥𝐞𝐝, 𝐏𝐥𝐞𝐚𝐬𝐞 𝐅𝐢𝐥𝐥 𝐀 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦 𝐒𝐞𝐬𝐬𝐢𝐨𝐧")
+    if not any([config.STRING1, config.STRING2, config.STRING3, config.STRING4, config.STRING5]):
+        LOGGER(__name__).error("String Session Not Filled, Please Fill At Least One Pyrogram Session")
         exit()
+
     await sudo()
+
     try:
         users = await get_gbanned()
         for user_id in users:
@@ -31,32 +27,36 @@ async def init():
         users = await get_banned_users()
         for user_id in users:
             BANNED_USERS.add(user_id)
-    except:
-        pass
+    except Exception as e:
+        LOGGER("TEAMZYRO").warning(f"Could not load banned users: {e}")
+
     await app.start()
+
     for all_module in ALL_MODULES:
-        importlib.import_module("TEAMZYRO.plugins" + all_module)
-    LOGGER("TEAMZYRO.plugins").info("𝐀𝐥𝐥 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 𝐋𝐨𝐚𝐝𝐞𝐝 𝐁𝐚𝐛𝐲🥳...")
+        importlib.import_module("TEAMZYRO.plugins." + all_module)
+
+    LOGGER("TEAMZYRO.plugins").info("All Features Loaded Successfully ✅")
+
     await userbot.start()
     await ZYRO.start()
+
     try:
         await ZYRO.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
-        LOGGER("TEAMZYRO").error(
-            "𝗣𝗹𝗭 𝗦𝗧𝗔𝗥𝗧 𝗬𝗢𝗨𝗥 𝗟𝗢𝗚 𝗚𝗥𝗢𝗨𝗣 𝗩𝗢𝗜𝗖𝗘𝗖𝗛𝗔𝗧\𝗖𝗛𝗔𝗡𝗡𝗘𝗟\n\n𝗕𝗔𝗕𝗬 𝗟𝗢𝗕 𝗬𝗢𝗨 𝗕𝗢𝗧 𝗦𝗧𝗢𝗣........"
-        )
-        exit()
-    except:
-        pass
+        LOGGER("TEAMZYRO").warning("Voice chat not active. Bot is idle.")
+    except Exception as e:
+        LOGGER("TEAMZYRO").error(f"Stream failed: {e}")
+
     await ZYRO.decorators()
-    LOGGER("TEAMZYRO").info(
-        "╔═════ஜ۩۞۩ஜ════╗\n  ☠︎︎𝗠𝗔𝗗𝗘 𝗕𝗬 𝗠𝗥 𝗞𝗔𝗥𝗠𝗔☠︎︎\n╚═════ஜ۩۞۩ஜ════╝"
-    )
+
+    LOGGER("TEAMZYRO").info("╔═════ஜ۩۞۩ஜ════╗\n  ☠︎︎ MADE BY MR KARMA ☠︎︎\n╚═════ஜ۩۞۩ஜ════╝")
+
     await idle()
+
     await app.stop()
     await userbot.stop()
-    LOGGER("TEAMZYRO").info("𝗦𝗧𝗢𝗣 𝗕𝗔𝗕𝗬 𝗟𝗢𝗕 𝗬𝗢𝗨 𝗠𝗨𝗦𝗜𝗖🎻 𝗕𝗢𝗧..")
+    LOGGER("TEAMZYRO").info("Bot Stopped. Goodbye 👋")
 
 
 if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(init())
+    asyncio.run(init())
